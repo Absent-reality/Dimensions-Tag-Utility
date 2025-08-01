@@ -1,4 +1,4 @@
-﻿![TitleImg](https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/Resources/Images/tagutil_logo.png?raw=true)
+﻿<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/Resources/Images/tagutil_logo.png?raw=true" alt="TitleImg" width="200"/>
 
 #**DimensionsTagUtility:**
 ------------------
