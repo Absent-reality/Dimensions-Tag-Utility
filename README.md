@@ -1,4 +1,6 @@
-﻿#**DimensionsTagUtility:**
+﻿![TitleImg](https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/Resources/Images/tagutil_logo.png?raw=true)
+
+#**DimensionsTagUtility:**
 ------------------
 A multi-platform utility for converting LEGO toy tag's hex data.
 
