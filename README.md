@@ -1,4 +1,6 @@
-﻿<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/Resources/Images/tagutil_logo.png?raw=true" alt="TitleImg" width="200"/>
+﻿<p align="center">
+<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/Resources/Images/tagutil_logo.png?raw=true" alt="TitleImg" width="200"/>
+</p>
 
 #**DimensionsTagUtility:**
 ------------------
@@ -9,6 +11,8 @@ This project was started purely as a "proof of concept", and is in no way endors
 I am building this project for personal use and, above all else, as a learning tool. The designs are aimed at what I wanted to achieve, thus may not work for everyone. 
 Use at your own risk.
 
+## Use:
+Enter the uuid from a blank tag, then search for the desired tag to display the converted hex data.
 
 -----------------------
 
