@@ -1,6 +1,6 @@
 ﻿#**DimensionsTagUtility:**
 ------------------
-A muilty platform utility for converting LEGO toy tag's hex data.
+A multi-platform utility for converting LEGO toy tag's hex data.
 
 ## Disclaimer:
 This project was started purely as a "proof of concept", and is in no way endorsed, sponsored or affiliated with the LEGO group.
