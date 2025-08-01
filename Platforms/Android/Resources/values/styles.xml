@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+	<style name="Maui.MainTheme" parent="Theme.MaterialComponents.DayNight">
+		<item name="android:colorActivatedHighlight">@color/Highlighted</item>
+		<item name="android:statusBarColor">@color/colorAccent</item>
+	</style>
+</resources>

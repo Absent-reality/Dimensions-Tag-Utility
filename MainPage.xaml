@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewmodel="clr-namespace:DimensionsTagUtility"
+             x:Class="DimensionsTagUtility.MainPage" BackgroundColor="Black"
+             x:DataType="viewmodel:TagPageViewModel" >
+
+    <Grid BackgroundColor="Transparent" x:Name="Stuff" Opacity="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height=".5*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*" />
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width=".5*" />
+        </Grid.ColumnDefinitions>
+        <Image           
+            x:Name="Img_grd"
+            Opacity="0"
+            Grid.Column="1"
+            Grid.Row="1"
+            Source="tagutil_logo.png"
+            HeightRequest="200"
+            WidthRequest="350" />
+
+        <Label 
+               x:Name="lbl_txt"            
+               Text="- An Absent project..."
+               FontSize="Medium"               
+               HorizontalTextAlignment="Center"
+               TextColor="White"          
+               Grid.Column="1"
+               Grid.Row="2"
+               Margin="0,5,0,0"
+               Opacity="0" />
+
+        <Label
+            Grid.Column="1"           
+            Grid.Row="2"
+            x:Name="lbl_ver"
+            HorizontalOptions="Center"
+            TextColor="White"
+            FontSize="Micro"
+            Text="{Binding VersionNumber}"
+            VerticalOptions="End"
+            />
+
+    </Grid>
+</ContentPage>

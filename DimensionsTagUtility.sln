@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36310.24
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DimensionsTagUtility", "DimensionsTagUtility.csproj", "{3E0E2016-8FA1-4ED2-878C-B200B6EE7FF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E0E2016-8FA1-4ED2-878C-B200B6EE7FF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0E2016-8FA1-4ED2-878C-B200B6EE7FF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0E2016-8FA1-4ED2-878C-B200B6EE7FF6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3E0E2016-8FA1-4ED2-878C-B200B6EE7FF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0E2016-8FA1-4ED2-878C-B200B6EE7FF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D5A343F-65E6-46C1-95A4-011D0BE0423B}
+	EndGlobalSection
+EndGlobal
