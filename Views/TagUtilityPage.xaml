@@ -56,7 +56,7 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Text="Uuid:"/>
+                    Text="Uid:"/>
 
                     <Border
                         Grid.Column="1"
@@ -67,11 +67,11 @@
 
                         <Entry 
                             Grid.Column="1"
-                            x:Name="UuidEntry"
-                            Placeholder="Enter Uuid.."
+                            x:Name="UidEntry"
+                            Placeholder="Enter Uid.."
                             PlaceholderColor="LightGray"
                             TextColor="White"                           
-                            Text="{Binding Uuid, Mode=OneWayToSource, Converter={convert:ByteArrayToStringConverter} }"                               
+                            Text="{Binding Uid, Mode=OneWayToSource, Converter={convert:ByteArrayToStringConverter} }"                               
                             MaxLength="20" >
                             <Entry.Behaviors>
                                 <toolkit:MaskedBehavior 
@@ -84,7 +84,7 @@
                 </Grid>
 
                 <Label 
-                    Text="{Binding UuidError}"                    
+                    Text="{Binding UidError}"                    
                     TextColor="Red"
                     IsVisible="true"                     
                     HorizontalOptions="Center"
@@ -183,16 +183,16 @@
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Grid.Column="0"
-                        Text="Page 24:"/>
+                        Text="Page 0x24:"/>
 
                     <Entry 
                          Grid.Column="1"                       
-                         Text="{Binding Page24, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                         Text="{Binding Page0x24, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
                          IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
                                          Binding ="{Binding x:DataType='Entry',
-                                            Source={x:Reference UuidEntry},
+                                            Source={x:Reference UidEntry},
                                             Path=Text.Length}"
                                             Value="0">
                                 <Setter Property="Text"
@@ -210,16 +210,16 @@
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
                         Grid.Column="0"
-                        Text="Page 25:"/>
+                        Text="Page 0x25:"/>
 
                     <Entry
                         Grid.Column="1"
-                        Text="{Binding Page25, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                        Text="{Binding Page0x25, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
                         IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
                                          Binding ="{Binding x:DataType='Entry',
-                                             Source={x:Reference UuidEntry},
+                                             Source={x:Reference UidEntry},
                                              Path=Text.Length}"
                                              Value="0">
                                 <Setter Property="Text"
@@ -237,16 +237,16 @@
                          VerticalOptions="Center"
                          HorizontalOptions="Center"
                          Grid.Column="0"
-                         Text="Page 26:"/>
+                         Text="Page 0x26:"/>
 
                     <Entry 
                          Grid.Column="1"
-                         Text="{Binding Page26, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                         Text="{Binding Page0x26, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
                          IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
                                          Binding ="{Binding x:DataType='Entry',
-                                            Source={x:Reference UuidEntry},
+                                            Source={x:Reference UidEntry},
                                             Path=Text.Length}"
                                             Value="0">
                                 <Setter Property="Text"
@@ -266,17 +266,17 @@
                         HorizontalOptions="Center"
                         Grid.Column="0"
                         Grid.Row="3"
-                        Text="Page 2B:"/>
+                        Text="Page 0x2B:"/>
 
                     <Entry
                         Grid.Column="1"
                         Grid.Row="3"
-                        Text="{Binding Page2b, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                        Text="{Binding Page0x2b, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
                         IsReadOnly="True">
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
                                          Binding ="{Binding x:DataType='Entry',
-                                            Source={x:Reference UuidEntry},
+                                            Source={x:Reference UidEntry},
                                             Path=Text.Length}"
                                             Value="0">
                                 <Setter Property="Text"

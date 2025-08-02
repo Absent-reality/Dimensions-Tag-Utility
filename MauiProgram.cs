@@ -32,7 +32,6 @@ namespace DimensionsTagUtility
         {
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<TagUtilityPage>();
-            builder.Services.AddSingleton<WindowsTagPage>();
             return builder;
         }
 

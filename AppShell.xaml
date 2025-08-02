@@ -18,9 +18,4 @@
         ContentTemplate="{DataTemplate local:TagUtilityPage}"
         Route="TagUtilityPage" />
 
-    <ShellContent
-        Shell.NavBarIsVisible="False"
-        ContentTemplate="{DataTemplate local:WindowsTagPage}"
-        Route="WindowsTagPage" />
-
 </Shell>

@@ -31,12 +31,9 @@ namespace DimensionsTagUtility
             await lbl_txt.FadeTo(0, 250);
             await Img_grd.FadeTo(0, 250);
             await Task.Delay(3000);
-//#if ANDROID
+
             await Shell.Current.GoToAsync($"///TagUtilityPage");
-//#endif
-//#if WINDOWS
-//            await Shell.Current.GoToAsync($"///WindowsTagPage");
-//#endif 
+
         }
 
     }

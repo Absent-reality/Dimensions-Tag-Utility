@@ -34,7 +34,7 @@ public partial class TagPageViewModel : ObservableObject
     bool _isDisplayed = false;
 
     [ObservableProperty]
-    string _uuidError = "";
+    string _UidError = "";
 
     [ObservableProperty]
     string _searchError = "";
@@ -45,31 +45,31 @@ public partial class TagPageViewModel : ObservableObject
     [ObservableProperty]
     SearchItems? selectedItem;
 
-    private byte[] _uuid = [];
-    public byte[] Uuid
+    private byte[] _Uid = [];
+    public byte[] Uid
     {
-        get { return _uuid; }
+        get { return _Uid; }
         set
         {
-            if (_uuid == value) return;
-            _uuid = value;
+            if (_Uid == value) return;
+            _Uid = value;
             OnPropertyChanged();
             ResetForms();
-            UuidError = "";
+            UidError = "";
         }
     }
 
     [ObservableProperty]
-    byte[] _page24 = [];
+    byte[] _page0x24 = [];
 
     [ObservableProperty]
-    byte[] _page25 = [];
+    byte[] _page0x25 = [];
 
     [ObservableProperty]
-    byte[] _page26 = [];
+    byte[] _page0x26 = [];
 
     [ObservableProperty]
-    byte[] _page2b = [];
+    byte[] _page0x2b = [];
 
     [ObservableProperty]
     ObservableCollection<SearchItems> _listItems = [];
@@ -77,7 +77,7 @@ public partial class TagPageViewModel : ObservableObject
     void ResetForms()
     {
         SearchError = "";
-        (Page24, Page25, Page26, Page2b) = ([], [], [], []);
+        (Page0x24, Page0x25, Page0x26, Page0x2b) = ([], [], [], []);
     }
 
     void QueryItems()
@@ -167,26 +167,26 @@ public partial class TagPageViewModel : ObservableObject
                 break;
         }
         if (toy.Name == "") { return; }
-        GetPageValues(Uuid, toy);
+        GetPageValues(Uid, toy);
     }
 
-    private void GetPageValues(byte[] uuid, ToyTag toy)
+    private void GetPageValues(byte[] Uid, ToyTag toy)
     {
-        if (uuid == null || uuid.Length == 0) { ReportError(ErrorType.Uuid); return; }
+        if (Uid == null || Uid.Length == 0) { ReportError(ErrorType.Uid); return; }
         if (toy == null) return;
 
-        byte[] AuthenticationKey = LegoTagTools.GenerateCardPassword(uuid);
-        Page2b = [0xA2, 0x2B, .. AuthenticationKey];
+        byte[] AuthenticationKey = LegoTagTools.GenerateCardPassword(Uid);
+        Page0x2b = [0xA2, 0x2B, .. AuthenticationKey];
 
         switch (toy.ToyTagType)
         {
             case ToyTagType.Character:
                 {
                     // Get the encrypted character ID
-                    var car = LegoTagTools.EncrypCharactertId(uuid, toy.Id);
-                    Page24 = [0xA2, 0x24, .. car.AsSpan(0, 4).ToArray()];
-                    Page25 = [0xA2, 0x25, .. car.AsSpan(4, 4).ToArray()];
-                    Page26 = [0xA2, 0x26, .. emptyBlock];
+                    var car = LegoTagTools.EncrypCharactertId(Uid, toy.Id);
+                    Page0x24 = [0xA2, 0x24, .. car.AsSpan(0, 4).ToArray()];
+                    Page0x25 = [0xA2, 0x25, .. car.AsSpan(4, 4).ToArray()];
+                    Page0x26 = [0xA2, 0x26, .. emptyBlock];
 
                 }
                 break;
@@ -195,9 +195,9 @@ public partial class TagPageViewModel : ObservableObject
                 {
                     // Get the encrypted vehicle ID
                     var vec = LegoTagTools.EncryptVehicleId(toy.Id);
-                    Page24 = [0xA2, 0x24, .. vec];
-                    Page25 = [0xA2, 0x25, .. emptyBlock];
-                    Page26 = [0xA2, 0x26, .. vehicleBlock];
+                    Page0x24 = [0xA2, 0x24, .. vec];
+                    Page0x25 = [0xA2, 0x25, .. emptyBlock];
+                    Page0x26 = [0xA2, 0x26, .. vehicleBlock];
 
                 }
                 break;
@@ -208,7 +208,7 @@ public partial class TagPageViewModel : ObservableObject
     [RelayCommand]
     async Task CopyPages()
     { 
-        var allPages = new[] { Page24, Page25, Page26, Page2b };
+        var allPages = new[] { Page0x24, Page0x25, Page0x26, Page0x2b };
            await CopyToClipBoard([.. allPages.Select(FormatBytes)]);
     }
 
@@ -216,8 +216,8 @@ public partial class TagPageViewModel : ObservableObject
     {
         switch (error)
         {
-            case ErrorType.Uuid:
-                UuidError = "Insert valid tag uuid.";
+            case ErrorType.Uid:
+                UidError = "Insert valid tag Uid.";
                 break;
 
             case ErrorType.Search:
