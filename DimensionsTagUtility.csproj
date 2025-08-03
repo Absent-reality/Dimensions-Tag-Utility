@@ -126,6 +126,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Content Include=".Github\Images\Screenshot_20250803_030825_Chrome.jpg" />
+	  <Content Include=".Github\Images\Screenshot_20250803_030933_Chrome.jpg" />
+	  <Content Include=".Github\Images\Screenshot_20250803_031038_Chrome.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiIcon Include="Resources\AppIcon\tagutil_ico.png" />
 	</ItemGroup>
 
