@@ -10,14 +10,15 @@ A multi-platform utility for converting LEGO toy tag's hex data.
 This project was started purely as a "proof of concept", and is in no way endorsed, sponsored or affiliated with the LEGO group.
 I am building this project for personal use and, above all else, as a learning tool. The designs are aimed at what I wanted to achieve, thus may not work for everyone.
 
-This tool does NOT write NFC data to your tags.
+This tool does NOT read or write NFC data to your tags.
 It only generates the page values so you can write the data manually using your own tools. 
 Use at your own risk.
 
 ## 🔧 Usage:
-Enter the UID from a blank NTAG chip.
+Build the project using your preferred IDE or build tool, or download the latest release for the desired platform from the [Releases].
+Enter the UID from a blank NTAG chip. ( must use an external NFC tool to read the UID )
 Search for the desired character.
-The tool will display the converted hex data for manual writing.
+The tool will display the converted hex data for manual writing ( again with an external tool).
 
 ## 📸 Screenshots
 
