@@ -22,20 +22,20 @@ The tool will display the converted hex data for manual writing.
 ## 📸 Screenshots
 
 <p align="center">
-<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/.Github/Images/Screenshot_20250803_030825_Chrome.jpg?raw=true" alt="ScreenShot1" width="200"/>
+<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/.Github/Images/Screenshot_20250803_030825_Chrome.jpg?raw=true" alt="ScreenShot1" />
 </p>
 
 <p align="center">
-<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/.Github/Images/Screenshot_20250803_031038_Chrome.jpg?raw=true" alt="ScreenShot1" width="200"/>
+<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/.Github/Images/Screenshot_20250803_031038_Chrome.jpg?raw=true" alt="ScreenShot2" />
 </p>
 
 <p align="center">
-<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/.Github/Images/Screenshot_20250803_030933_Chrome.jpg?raw=true" alt="ScreenShot1" width="200"/>
+<img src="https://github.com/Absent-reality/Dimensions-Tag-Utility/blob/master/.Github/Images/Screenshot_20250803_030933_Chrome.jpg?raw=true" alt="ScreenShot3" />
 </p>
 
 -----------------------
 
 #### 🙏 Credits:
-Special thanks to https://github.com/Ellerbach for their LEGO Dimensions project, which provided key logic and inspiration.
-And to https://github.com/skylandersNFC for the readme tips.
+Special thanks to [Ellerbach](https://github.com/Ellerbach) for their LEGO Dimensions project, which provided key logic and inspiration.
+And to [skylandersNFC](https://github.com/skylandersNFC) for the readme tips.
 
