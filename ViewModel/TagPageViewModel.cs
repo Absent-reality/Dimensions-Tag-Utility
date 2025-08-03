@@ -1,7 +1,6 @@
-﻿using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Maui.Alerts;
+using DimensionsTagUtility.Tools;
 using System.Collections.ObjectModel;
 using System.Text;
 
@@ -27,23 +26,23 @@ public partial class TagPageViewModel : ObservableObject
     private readonly byte[] vehicleBlock = [0x00, 0x01, 0x00, 0x00];
     private readonly byte[] emptyBlock = [0x00, 0x00, 0x00, 0x00];
 
-    private const string _versionNumber = "Ver: 1.0.1";
-    public string VersionNumber => _versionNumber;
+    private const string _versionNumber = "Ver: 1.0.0";
+    public static string VersionNumber => _versionNumber;
 
     [ObservableProperty]
-    bool _isDisplayed = false;
+    public partial bool IsDisplayed { get; set; } = false;
 
     [ObservableProperty]
-    string _UidError = "";
+    public partial string UidError { get; set; } = "";
 
     [ObservableProperty]
-    string _searchError = "";
+    public partial string SearchError { get; set; } = "";
 
     [ObservableProperty]
-    string results = "";
+    public partial string Results { get; set; } = "";
 
     [ObservableProperty]
-    SearchItems? selectedItem;
+    public partial SearchItems? SelectedItem { get; set; } = null;
 
     private byte[] _Uid = [];
     public byte[] Uid
@@ -54,25 +53,24 @@ public partial class TagPageViewModel : ObservableObject
             if (_Uid == value) return;
             _Uid = value;
             OnPropertyChanged();
-            ResetForms();
-            UidError = "";
+
         }
     }
 
     [ObservableProperty]
-    byte[] _page0x24 = [];
+    public partial byte[] Page0x24 { get; set; } = [];
 
     [ObservableProperty]
-    byte[] _page0x25 = [];
+    public partial byte[] Page0x25 { get; set; } = [];
 
     [ObservableProperty]
-    byte[] _page0x26 = [];
+    public partial byte[] Page0x26 { get; set; } = [];
 
     [ObservableProperty]
-    byte[] _page0x2b = [];
+    public partial byte[] Page0x2b { get; set; } = [];
 
     [ObservableProperty]
-    ObservableCollection<SearchItems> _listItems = [];
+    public partial ObservableCollection<SearchItems> ListItems { get; set; } = [];
 
     void ResetForms()
     {
@@ -107,6 +105,22 @@ public partial class TagPageViewModel : ObservableObject
     }
 
     [RelayCommand]
+    void UidTextChanged(string text)
+    {
+        if (text is null) return;
+        if ( text.Length < 20)
+        {
+            Uid = [];
+            ResetForms();
+            UidError = "";
+        }
+        else
+        {
+            Uid = ByteArrayToStringConverter.ConvertToByteArray(text);
+        }
+    }
+
+    [RelayCommand]
     void ItemSelected(string itemName)
     {
 #if ANDROID
@@ -125,7 +139,7 @@ public partial class TagPageViewModel : ObservableObject
     {
         if (Query == "") { ReportError(ErrorType.Search); return; }
 
-        ToyTag toy = new ToyTag(0, "", "", [], ToyTagType.None);
+        ToyTag toy = new(0, "", "", [], ToyTagType.None);
 
         var thisItem = ListItems.FirstOrDefault(x => x.ItemName == Query);
         if (thisItem == null) { ReportError(ErrorType.Search); return; }
@@ -229,7 +243,7 @@ public partial class TagPageViewModel : ObservableObject
     string FormatBytes(byte[] data) =>
     BitConverter.ToString(data).Replace("-", ":");
 
-    async Task CopyToClipBoard(string[] text)
+    static async Task CopyToClipBoard(string[] text)
     {  
         StringBuilder message = new();
 
@@ -247,7 +261,7 @@ public partial class TagPageViewModel : ObservableObject
         await Clipboard.Default.SetTextAsync(message.ToString());  
     }
 
-    private async Task ClearClipboard()
+    private static async Task ClearClipboard()
     {
         await Clipboard.Default.SetTextAsync(null);
     }

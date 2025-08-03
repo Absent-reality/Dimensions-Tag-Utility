@@ -5,7 +5,8 @@
              xmlns:viewmodel="clr-namespace:DimensionsTagUtility"
              x:Class="DimensionsTagUtility.TagUtilityPage" BackgroundImageSource="mainbgnd.png"
              x:DataType="viewmodel:TagPageViewModel"
-             xmlns:convert ="clr-namespace:DimensionsTagUtility.Tools">
+             xmlns:convert ="clr-namespace:DimensionsTagUtility.Tools"
+             x:Name="TagPage">
     <ContentPage.Resources>
         <ResourceDictionary>
             <convert:ByteArrayToStringConverter x:Key="ArrayToString" />
@@ -28,7 +29,6 @@
                         <OnIdiom.Desktop>0,0,20,0</OnIdiom.Desktop>
                     </OnIdiom>
                 </VerticalStackLayout.Margin>
-
 
                 <Label   
                     HorizontalOptions="Center"
@@ -71,13 +71,18 @@
                             Placeholder="Enter Uid.."
                             PlaceholderColor="LightGray"
                             TextColor="White"                           
-                            Text="{Binding Uid, Mode=OneWayToSource, Converter={convert:ByteArrayToStringConverter} }"                               
+                            Text=""                               
                             MaxLength="20" >
                             <Entry.Behaviors>
                                 <toolkit:MaskedBehavior 
                                     Mask="##:##:##:##:##:##:##"
                                     UnmaskedCharacter="#" 
                                     />
+                                <toolkit:EventToCommandBehavior 
+                                                EventName="TextChanged"
+                                                Command="{Binding UidTextChangedCommand}"
+                                                CommandParameter="{Binding Source={x:Reference UidEntry}, Path=Text}"
+                                                BindingContext="{Binding Source={x:Reference TagPage}, Path=BindingContext}" />
                             </Entry.Behaviors>
                         </Entry>
                     </Border>
@@ -144,36 +149,27 @@
 
                 </Grid>
 
-                <ListView 
+                <CollectionView
                     x:Name="searchResults"
                     ItemsSource="{Binding ListItems}"
+                    IsVisible="{Binding IsDisplayed}"
+                    SelectionMode="None"
                     VerticalOptions="Start"
-                    IsVisible="{Binding IsDisplayed}" 
-                    SelectedItem="{Binding SelectedItem}" 
-                    MaximumHeightRequest="200" >
-                   
-
-                    <ListView.ItemTemplate>
+                    MaximumHeightRequest="200">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewmodel:SearchItems">
-                            <TextCell 
-                                Height="50"  
-                                Text="{x:Binding ItemName}"
-                                Detail="" 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TagPageViewModel}}, Path= ItemSelectedCommand}"
-                                CommandParameter="{Binding ItemName}"/>
+                            <Label Text="{Binding ItemName}"
+                                   FontSize="16"
+                                   Padding="8">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                     Command="{Binding BindingContext.ItemSelectedCommand, Source={x:Reference searchResults}}" 
+                                     CommandParameter="{Binding ItemName}" />
+                                </Label.GestureRecognizers>
+                            </Label>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                    <ListView.Triggers>
-                        <DataTrigger TargetType="ListView" 
-                                         Binding ="{Binding x:DataType='Entry',
-                                            Source={x:Reference searchBar},
-                                            Path=Text.Length}"
-                                            Value="0">
-                            <Setter Property="IsVisible"
-                                        Value="False"/>
-                        </DataTrigger>
-                    </ListView.Triggers>
-                </ListView>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
                 <Grid    
                     ColumnDefinitions="20*,80*"
@@ -187,14 +183,12 @@
 
                     <Entry 
                          Grid.Column="1"                       
-                         Text="{Binding Page0x24, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                         Text="{Binding Page0x24, Mode=OneWay, Converter={StaticResource ArrayToString}}"
                          IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding ="{Binding x:DataType='Entry',
-                                            Source={x:Reference UidEntry},
-                                            Path=Text.Length}"
-                                            Value="0">
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
                             </DataTrigger>
@@ -214,14 +208,12 @@
 
                     <Entry
                         Grid.Column="1"
-                        Text="{Binding Page0x25, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                        Text="{Binding Page0x25, Mode=OneWay, Converter={StaticResource ArrayToString}}"
                         IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding ="{Binding x:DataType='Entry',
-                                             Source={x:Reference UidEntry},
-                                             Path=Text.Length}"
-                                             Value="0">
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
                             </DataTrigger>
@@ -241,14 +233,12 @@
 
                     <Entry 
                          Grid.Column="1"
-                         Text="{Binding Page0x26, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                         Text="{Binding Page0x26, Mode=OneWay, Converter={StaticResource ArrayToString}}"
                          IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding ="{Binding x:DataType='Entry',
-                                            Source={x:Reference UidEntry},
-                                            Path=Text.Length}"
-                                            Value="0">
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
                             </DataTrigger>
@@ -271,14 +261,12 @@
                     <Entry
                         Grid.Column="1"
                         Grid.Row="3"
-                        Text="{Binding Page0x2b, Mode=OneWay, Converter={convert:ByteArrayToStringConverter}}"
+                        Text="{Binding Page0x2b, Mode=OneWay, Converter={StaticResource ArrayToString}}"
                         IsReadOnly="True">
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding ="{Binding x:DataType='Entry',
-                                            Source={x:Reference UidEntry},
-                                            Path=Text.Length}"
-                                            Value="0">
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
                             </DataTrigger>

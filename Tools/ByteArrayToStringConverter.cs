@@ -1,10 +1,15 @@
 ﻿using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace DimensionsTagUtility.Tools
 {
-    public class ByteArrayToStringConverter : IValueConverter
+    public partial class ByteArrayToStringConverter : IValueConverter
     {
-        public object? Convert(object? value, Type targetType, object? parameter, System.Globalization.CultureInfo culture)
+
+        [GeneratedRegex(@"\A(?:[0-9A-Fa-f]{2})+\z")]
+        private static partial Regex ValidHexRegex();
+
+        public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             switch (value)
             {
@@ -19,24 +24,40 @@ namespace DimensionsTagUtility.Tools
             return string.Empty;
         }
 
-        public object? ConvertBack(object? value, Type targetType, object? parameter, System.Globalization.CultureInfo culture)
+        public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            //This is for numerical input, not text.
-            var valueString = (value as string ?? string.Empty)
-                    .Replace(":", string.Empty);
+            var valueString = value as string ?? string.Empty;
+            var byteArray = ConvertToByteArray(valueString);
+            return byteArray.Length == 0 ? Binding.DoNothing : byteArray;
+        }
 
-            byte[] byteArray = [];
-            if (valueString.Length != 14 || !Regex.IsMatch(valueString, @"\A[0-9A-Fa-f]{14}\z")) return Binding.DoNothing;
+        public static byte[] ConvertToByteArray(string hexString)
+        {
+            var updatedString = hexString.Replace(":", string.Empty);
 
-            byteArray = new byte[7];
+            if (updatedString.Length % 2 != 0 ||
+                !ValidHexRegex().IsMatch(updatedString)) return [];
 
-            for (int i = 0; i < byteArray.Length; i++)
+            if (!TryParseHexString(updatedString.AsSpan(), out byte[] byteArray)) return [];
+            return byteArray;
+        }
+
+        public static bool TryParseHexString(ReadOnlySpan<char> hexSpan, out byte[] result)
+        {
+            result = [];
+            if (hexSpan.Length % 2 != 0) return false;
+
+            byte[] buffer = new byte[hexSpan.Length / 2];
+
+            for (int i = 0; i < buffer.Length; i++)
             {
-                string hexPair = valueString.Substring(i * 2, 2);
-                byteArray[i] = System.Convert.ToByte(hexPair, 16);
+                ReadOnlySpan<char> hexPair = hexSpan.Slice(i * 2, 2);
+                if (!byte.TryParse(hexPair, NumberStyles.HexNumber, null, out buffer[i]))
+                    return false;
             }
 
-            return byteArray;
+            result = buffer;
+            return true;
         }
 
     }

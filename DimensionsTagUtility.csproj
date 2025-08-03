@@ -19,19 +19,18 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
+	<!--	<WindowsPackageType>None</WindowsPackageType>  -->
 
 		<!-- Display name -->
 		<ApplicationTitle>DimensionsTagUtility</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.DimensionsTagUtility</ApplicationId>
+		<ApplicationId>com.Absent_Productions.DimensionsTagUtility</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
-		<!-- To develop, package, and publish an app to the Microsoft Store, see: https://aka.ms/MauiTemplateUnpackaged -->
-		<WindowsPackageType>MSIX</WindowsPackageType>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">15.0</SupportedOSPlatformVersion>
@@ -39,47 +38,66 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<AndroidSigningKeyStore>absent-productions.keystore</AndroidSigningKeyStore>
+		<FileVersion></FileVersion>
+		<GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+		<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+		<AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+		<AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+		<GenerateTestArtifacts>True</GenerateTestArtifacts>
+		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+		<DefaultLanguage>en</DefaultLanguage>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>H3a+h3r1</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>dimensions-tag-utility</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>H3a+h3r1</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-ios|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-android|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	  <AndroidSigningStorePass>H3a+h3r1</AndroidSigningStorePass>
+	  <AndroidSigningKeyAlias>dimensions-tag-utility</AndroidSigningKeyAlias>
+	  <AndroidSigningKeyPass>H3a+h3r1</AndroidSigningKeyPass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-ios|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-maccatalyst|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0-windows10.0.19041.0|AnyCPU'">
-	  <ApplicationTitle>DimensionsTag-Converter</ApplicationTitle>
-	  <ApplicationId>com.absentproductions.dimensionstag-converter</ApplicationId>
+	  <ApplicationTitle>Dimensions Tag Utility</ApplicationTitle>
+	  <ApplicationId>com.Absent-Productions.DimensionsTagUtility</ApplicationId>
+
 	</PropertyGroup>
 
 	<ItemGroup>
