@@ -20,7 +20,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>preview</LangVersion>
-	<!--	<WindowsPackageType>None</WindowsPackageType>  -->
+		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
+		<!-- <WindowsPackageType>None</WindowsPackageType>  -->
 
 		<!-- Display name -->
 		<ApplicationTitle>DimensionsTagUtility</ApplicationTitle>
@@ -47,7 +48,7 @@
 		<AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
 		<GenerateTestArtifacts>True</GenerateTestArtifacts>
 		<HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-		<DefaultLanguage>en</DefaultLanguage>
+		<DefaultLanguage>en-us</DefaultLanguage>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net9.0-android|AnyCPU'">

@@ -26,8 +26,7 @@ public partial class TagPageViewModel : ObservableObject
     private readonly byte[] vehicleBlock = [0x00, 0x01, 0x00, 0x00];
     private readonly byte[] emptyBlock = [0x00, 0x00, 0x00, 0x00];
 
-    private const string _versionNumber = "Ver: 1.0.0";
-    public static string VersionNumber => _versionNumber;
+    public string VersionNumber => "Ver: 1.0.0";
 
     [ObservableProperty]
     public partial bool IsDisplayed { get; set; } = false;

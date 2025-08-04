@@ -15,7 +15,7 @@ It only generates the page values so you can write the data manually using your 
 Use at your own risk.
 
 ## 🔧 Usage:
-Build the project using your preferred IDE or build tool, or download the latest release for the desired platform from the [Releases].
+Build the project using your preferred IDE or build tool, or download the latest release for the desired platform from the [Releases](https://github.com/Absent-reality/Dimensions-Tag-Utility/releases).
 Enter the UID from a blank NTAG chip. ( must use an external NFC tool to read the UID )
 Search for the desired character.
 The tool will display the converted hex data for manual writing ( again with an external tool).

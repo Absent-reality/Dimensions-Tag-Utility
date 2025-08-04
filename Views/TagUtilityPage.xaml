@@ -82,7 +82,7 @@
                                                 EventName="TextChanged"
                                                 Command="{Binding UidTextChangedCommand}"
                                                 CommandParameter="{Binding Source={x:Reference UidEntry}, Path=Text}"
-                                                BindingContext="{Binding Source={x:Reference TagPage}, Path=BindingContext}" />
+                                                BindingContext="{x:Reference TagPage}" />
                             </Entry.Behaviors>
                         </Entry>
                     </Border>
