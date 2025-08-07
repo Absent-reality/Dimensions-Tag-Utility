@@ -1,3 +1,6 @@
+
+using CommunityToolkit.Mvvm.Input;
+
 namespace DimensionsTagUtility;
 
 public partial class TagUtilityPage : ContentPage

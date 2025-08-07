@@ -80,9 +80,9 @@
                                     />
                                 <toolkit:EventToCommandBehavior 
                                                 EventName="TextChanged"
-                                                Command="{Binding UidTextChangedCommand}"
-                                                CommandParameter="{Binding Source={x:Reference UidEntry}, Path=Text}"
-                                                BindingContext="{x:Reference TagPage}" />
+                                                Command="{Binding Source={x:Reference TagPage}, Path=BindingContext.UidTextChangedCommand, x:DataType=ContentPage}"                                                         
+                                                CommandParameter="{Binding Source={x:Reference UidEntry}, Path=Text, x:DataType=Entry}"
+                                                />
                             </Entry.Behaviors>
                         </Entry>
                     </Border>
@@ -158,15 +158,27 @@
                     MaximumHeightRequest="200">
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="viewmodel:SearchItems">
+                            <Grid Padding="2"
+                                  BackgroundColor="Transparent">
+                                <Border
+                                     StrokeShape="{RoundRectangle CornerRadius=5}"
+                                     Background="Transparent"                        
+                                      >
                             <Label Text="{Binding ItemName}"
                                    FontSize="16"
                                    Padding="8">
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer 
-                                     Command="{Binding BindingContext.ItemSelectedCommand, Source={x:Reference searchResults}}" 
+                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TagPageViewModel}}, Path= ItemSelectedCommand, x:DataType= viewmodel:TagPageViewModel}"
                                      CommandParameter="{Binding ItemName}" />
                                 </Label.GestureRecognizers>
-                            </Label>
+                                <Label.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        HoveredBackgroundColor="#161616" />                             
+                                </Label.Behaviors>                                
+                                   </Label>
+                                </Border>
+                            </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -187,7 +199,7 @@
                          IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length, x:DataType=Entry}"
                                          Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
@@ -212,7 +224,7 @@
                         IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length, x:DataType=Entry}"
                                          Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
@@ -237,7 +249,7 @@
                          IsReadOnly="True" >
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length, x:DataType=Entry}"
                                          Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
@@ -265,7 +277,7 @@
                         IsReadOnly="True">
                         <Entry.Triggers>
                             <DataTrigger TargetType="Entry" 
-                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length}"
+                                         Binding="{Binding Source={x:Reference UidEntry}, Path=Text.Length, x:DataType=Entry}"
                                          Value="0">
                                 <Setter Property="Text"
                                         Value=""/>
